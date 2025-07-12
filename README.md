@@ -1,106 +1,108 @@
-🔐 Microsoft Active Directory Certificate Services (AD CS)
-GBA 5200 | Adam Gomez
+# 🔐 Microsoft Active Directory Certificate Services (AD CS)
+
+**GBA 5200 | Adam Gomez**
 
 This project explores Microsoft’s Active Directory Certificate Services (AD CS) and its real-world use in securing enterprise communication through Public Key Infrastructure (PKI). The walkthrough includes deploying a domain environment, creating users, and issuing certificates to enforce authentication, confidentiality, and encryption within an organization.
 
-🎥 Video Demonstration
-YouTube: AD CS Lab Demo – Creating a Domain, Users, and Certificates
+---
 
-(Replace the link once your video is uploaded)
+## 🎥 Video Demonstration
 
-🖥️ Lab Environment
-Windows Server (AD Domain Controller)
+**YouTube**: [AD CS Lab Demo – Creating a Domain, Users, and Certificates](https://youtu.be/YOUR-LINK-HERE)
 
-Active Directory Certificate Services Role
+---
 
-Microsoft Management Console (MMC)
+## 🖥️ Lab Environment
 
-Virtualized Lab via Hyper-V / Azure / VMware
+- **Windows Server** (as Domain Controller)
+- **Active Directory Certificate Services (AD CS)**
+- **Microsoft Management Console (MMC)**
+- **Virtualized Lab** (e.g., Hyper-V / Azure / VMware)
 
-🧩 Key Technologies and Concepts Covered
-Public Key Infrastructure (PKI)
+---
 
-Enterprise CA vs Standalone CA
+## 🧩 Key Technologies and Concepts
 
-Two-Tier Certificate Authority Hierarchy
+- Public Key Infrastructure (PKI)
+- Enterprise CA vs Standalone CA
+- Certificate Hierarchy (Root, Issuing, Intermediate)
+- Windows Certificate Store
+- Role-Based & Attribute-Based Access Control
+- Digital Signatures and SSL/TLS
 
-Symmetric vs Asymmetric Encryption
+---
 
-Windows Certificate Store
+## 🛠️ Walkthrough: Project Steps
 
-Digital Signatures & SSL/TLS
+### 🔹 Step 1: Create a Windows Domain
 
-Role- and Attribute-Based Access Control
+- Deployed a Windows Server virtual machine
+- Promoted it to a Domain Controller (`example.local`)
 
-🛠️ Walkthrough: Project Steps
-🔹 Step 1: Create a Windows Domain Environment
-Deployed a virtual Windows Server machine
+### 🔹 Step 2: Add Users and Groups
 
-Promoted it to a Domain Controller
+- Created user accounts in Active Directory
+- Assigned to department-based groups (e.g., IT, Marketing)
 
-Created a new Active Directory domain (example.local)
+### 🔹 Step 3: Install AD CS
 
-🔹 Step 2: Add Users and Groups
-Created multiple user accounts via Active Directory Users and Computers (ADUC)
+- Installed the **AD CS Role** via Server Manager
+- Chose **Enterprise Root CA** configuration
+- Set hash algorithm to **SHA-256**
+- Chose key length, validity period, and storage paths
 
-Assigned users to different groups based on department (e.g., Marketing, IT, Finance)
+### 🔹 Step 4: Issue Certificates
 
-🔹 Step 3: Install Active Directory Certificate Services (AD CS)
-Installed AD CS Role via Server Manager
+- Created certificate templates
+- Issued **User Certificates** via MMC
+- Auto-enrolled **Computer Certificates** through Group Policy
+- Validated issuance through Certificate Store
 
-Configured the role as an Enterprise Root CA
+---
 
-Selected SHA-256 as the hash algorithm for the CA
+## 🔐 Use Cases
 
-Set a certificate validity period and storage location for logs and certificate database
+### 📧 Secure Email (S/MIME)
 
-🔹 Step 4: Issue Certificates to Users and Devices
-Used Certificate Templates and the MMC to enroll user certificates
+- Digitally signs and encrypts emails to ensure sender authenticity and message privacy
 
-Assigned certificates to specific users for S/MIME and secure email
+### 🌐 Secure Wireless Networks (802.1X)
 
-Demonstrated computer certificate auto-enrollment
+- Requires valid device certificates to access enterprise Wi-Fi
 
-Used Group Policy to push certificate policies automatically
+### 🛡️ Virtual Private Networks (VPN)
 
-🔐 Use Cases for AD CS
-📧 Secure Email (S/MIME)
-Ensures that emails are digitally signed and encrypted
+- Enforces certificate-based authentication for secure remote access
 
-Verifies sender identity and protects message integrity
+### 🌍 Web Server Certificates (SSL/TLS)
 
-🌐 Secure Wireless Networks (802.1X)
-Validates device access through certificate-based authentication
+- Protects data transmission and ensures website legitimacy
 
-Encrypts communication between endpoint and access points
+---
 
-🌍 Virtual Private Networks (VPN)
-Replaces username/password logins with certificate-based authentication
+## 🧾 Certificate Types
 
-Creates encrypted tunnels using IPSec
+| Certificate Type     | Purpose                                                                 |
+|----------------------|-------------------------------------------------------------------------|
+| **User Certificates** | Authenticate users, encrypt email, enable digital signatures           |
+| **Computer Certificates** | Authenticate domain-joined devices, secure communications         |
+| **Web Server Certificates** | Encrypt web traffic using HTTPS via SSL/TLS                     |
 
-🔒 Web Server Security (SSL/TLS)
-Protects login credentials and sensitive data sent via websites
+---
 
-Uses server certificates to encrypt HTTPS sessions
+## 🛡️ PKI Hierarchy & Security
 
-🧾 Types of Certificates Issued
-Certificate Type	Purpose
-User Certificates	Authenticates users, signs emails, encrypts communications
-Computer Certificates	Secures machine identity for domain communication
-Web Server Certificates	Encrypts web traffic using SSL/TLS
-(Others possible: Smart Cards, Device Auth, RADIUS Auth)	
+- **Root CA**: Central trust anchor
+- **Two-Tier Hierarchy**: Best practice with isolated offline Root CA and online Issuing CA
+- **Intermediate CAs** (optional): Add policy-based segmentation and security boundaries
 
-🛡️ Certificate Hierarchy
-Root CA: Single point of trust (configured as Enterprise CA)
+---
 
-Two-Tier Model: Suggested for larger orgs (root + issuing CAs)
+## ⚖️ Advantages of AD CS
 
-Offline Root Best Practice: Added security by isolating the trust anchor
+- ✅ Full control over certificate lifecycle and trust model
+- ✅ Integrated with Active Directory
+- ✅ Enables automation via Group Policy and auto-enrollment
+- ✅ Supports strong cryptography (SHA-256+)
+- ✅ Helps enforce Zero Trust security principles
 
-⚖️ Advantages of AD CS
-✅ Full control over certificate lifecycle
-✅ Integrated with Active Directory
-✅ Supports modern cryptography (SHA-256+)
-✅ Enables Zero Trust policies with strict access controls
-✅ Certificate auto-enrollment and GPO integration
