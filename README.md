@@ -8,7 +8,7 @@ This project explores Microsoft’s Active Directory Certificate Services (AD CS
 
 ## 🎥 Video Demonstration
 
-**YouTube**: [AD CS Lab Demo – Creating a Domain, Users, and Certificates](https://youtu.be/YOUR-LINK-HERE)
+**YouTube**: [AD CS Lab Demo – Creating a Domain, Users, and Certificates](https://www.youtube.com/watch?v=GFT2e1lp3dE)
 
 ---
 
