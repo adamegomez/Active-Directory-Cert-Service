@@ -1,7 +1,5 @@
 # 🔐 Microsoft Active Directory Certificate Services (AD CS)
 
-**GBA 5200 | Adam Gomez**
-
 This project explores Microsoft’s Active Directory Certificate Services (AD CS) and its real-world use in securing enterprise communication through Public Key Infrastructure (PKI). The walkthrough includes deploying a domain environment, creating users, and issuing certificates to enforce authentication, confidentiality, and encryption within an organization.
 
 ---
